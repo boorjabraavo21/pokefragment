@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.turing.alan.fragmentspokemon.databinding.FragmentPokemonDetailBinding
 
 class PokemonDetailFragment : Fragment() {
     private lateinit var binding: FragmentPokemonDetailBinding
     private val args: PokemonDetailFragmentArgs by navArgs()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,7 +27,19 @@ class PokemonDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.pokemonNameText.text = args.pokemon.name
+        val pokemon = args.pokemon
+        binding.pokemonNameText.text = pokemon.name
+        binding.pokemonDescriptionText.text = pokemon.description
+        binding.pokemonImage.setImageResource(pokemon.imageId)
+        val chipGroup:ChipGroup = binding.pokemonTypes
+        val chip:Chip = Chip(view.context).apply {
+            text = pokemon.mainType
+        }
+
+        chipGroup.addView(chip)
+        if (pokemon.secondaryType != null) {
+            chipGroup.addView(Chip(view.context).apply { text = pokemon.secondaryType })
+        }
     }
 
 
