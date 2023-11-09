@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nueva_navegacion"
+    app:startDestination="@id/pokemonListFragment2">
+
+    <fragment
+        android:id="@+id/pokemonListFragment2"
+        android:name="com.turing.alan.fragmentspokemon.ui.PokemonListFragment"
+        android:label="PokemonListFragment" />
+</navigation>
